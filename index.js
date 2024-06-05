@@ -1,16 +1,16 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const port = 5000;
+// const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
 
-const uri =
-  "mongodb+srv://nazmulcpi2012:tvWGdsGz3pKD6TBS@cluster0.uwc0q6d.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-// const uri = "mongodb+srv://nazmulcpi2012:<password>@cluster0.uwc0q6d.mongodb.net/?
+const uri = process.env.DATABASE_URL;
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -79,5 +79,4 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-// tvWGdsGz3pKD6TBS
-// nazmulcpi2012
+
